@@ -1,6 +1,12 @@
-
+import time
+import os
 import subprocess
 import re
+import google.generativeai as genai
+import os
+
+# input your key
+gemini_key = ''
 
 def getAllComponents(data_dict: dict):
 
@@ -125,3 +131,79 @@ def get_running_info():
     app_name = final_ans[0]
     activity_name = final_ans[1][len(app_name) + 1: -1]
     return {'app': app_name, 'activity': activity_name}
+
+def click(text_name: str, all_components: list):
+    """
+    :param text_name:
+    :param all_components:
+    :return:
+    """
+    time.sleep(0.5)
+    # global pic_index
+    is_clicked = False
+    for e_component in all_components:
+        if e_component['@desc'] == text_name:
+            bounds = e_component['@bounds']
+            res = get_bounds(bounds)
+            # screen_shot(pic_index, res)
+            # pic_index += 1
+            cmd = "adb shell input tap {x} {y}"
+            cmd = cmd.replace('{x}', str((res[0] + res[2]) / 2)).replace('{y}', str((res[1] + res[3]) / 2))
+            print("run command: {}".format(cmd))
+            os.system(cmd)
+            is_clicked = True
+            break
+    if is_clicked:
+        print(text_name + " is clicked.")
+    else:
+        print(text_name + " is not found.")
+
+def input_text(content: str, bounds):
+    """
+    """
+    # global pic_index
+    res = get_bounds(bounds)
+    # screen_shot(pic_index, res)
+    # pic_index += 1
+
+    cmd = "adb shell input tap {x} {y}"
+
+    cmd = cmd.replace('{x}', str((res[0] + res[2]) / 2)).replace('{y}', str((res[1] + res[3]) / 2))
+    print("run command: {}".format(cmd))
+    os.system(cmd)
+
+    content = content.replace(' ', '\ ')
+
+    cmd = "adb shell input text " + content
+    print("run command: {}".format(cmd))
+    os.system(cmd)
+
+def init_llm(): 
+    # 设置代理以访问Google Gemini
+    os.environ["HTTP_PROXY"] = "http://127.0.0.1:7890"
+    os.environ["HTTP_PROXYS"] = "http://127.0.0.1:7890"
+
+    genai.configure(api_key=gemini_key)  # 填入自己的api_key
+    
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    chat = model.start_chat()
+    few_shot = """
+Now that you are an automated testing program for Android software, \
+what you have to do is test the functionality of the software as completely as possible \
+and check for any problems. I will tell you the information of the current program interface \
+by asking questions, and you will tell me the next step of the test by answering.
+
+When you encounter components with similar names, you can look at them as the same category and test one or more of them. When you encounter many operation options, you tend to click on them from smallest to largest, and tend to click on the component with "menu button" in its name.
+
+Now that you are an automated testing program for Android software, what you have to do is test the functionality of the software as completely as possible and check for any problems. I will tell you the information of the current program interface by asking questions, and you will tell me the next step of the test by answering.
+
+"""
+    # TODO: 异常处理不完善
+    while True:
+        try:
+            response = chat.send_message(few_shot)
+            break
+        except:
+            print('llm使用次数达到限制，等待60秒')
+            time.sleep(60)
+    return chat

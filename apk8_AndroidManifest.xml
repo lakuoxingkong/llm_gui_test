@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="28" android:compileSdkVersionCodename="9" package="com.mambet.tv" platformBuildVersionCode="28" platformBuildVersionName="9">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <permission android:name="com.mambet.tv.permission.PUSH_NOTIFICATION_TOKEN_UPDATE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.mambet.tv.permission.PUSH_NOTIFICATION_TOKEN_UPDATE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <application android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:fullBackupContent="@xml/a" android:icon="@mipmap/a" android:label="@string/bb" android:name="com.seagroup.spark.SparkApplication" android:roundIcon="@mipmap/c" android:supportsRtl="true" android:theme="@style/f">
+        <provider android:authorities="com.mambet.tv.LiveInitContentProvider" android:exported="false" android:name="com.seagroup.spark.LiveInitContentProvider" android:process=":live" android:syncable="false"/>
+        <provider android:authorities="com.mambet.tv.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/b"/>
+        </provider>
+        <service android:exported="true" android:name="com.seagroup.spark.streaming.GGStreamScreenService" android:process=":live">
+            <intent-filter>
+                <action android:name="com.seagroup.spark.action.SEND_VOICE"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.seagroup.spark.downloader.DownloadService"/>
+        <activity android:label="@string/bb" android:name="com.seagroup.spark.LauncherActivity" android:theme="@style/fi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/bb" android:name="com.seagroup.spark.SplashActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.update.ForceUpdateActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:label="@string/a_" android:launchMode="singleTask" android:name="com.seagroup.spark.clips.HomeActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/a9" android:launchMode="singleTop" android:name="com.seagroup.spark.login.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ad" android:name="com.seagroup.spark.streaming.StreamSelectActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:label="@string/ru" android:name="com.seagroup.spark.streaming.StreamDescriptionEditActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.seagroup.spark.streaming.StreamStatusActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:label="@string/u8" android:name="com.seagroup.spark.streaming.KeywordGuideActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ac" android:name="com.seagroup.spark.gameList.GameSelectActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ac" android:name="com.seagroup.spark.gameList.AppListActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.seagroup.spark.videoDetail.VideoDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.base.HolderActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.social.UserProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.social.LikedVideoListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.social.SocialUserListActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/aa" android:launchMode="singleTop" android:name="com.seagroup.spark.streaming.platform.PlatformSelectActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/mp" android:name="com.seagroup.spark.streaming.platform.CustomRTMPActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/af" android:launchMode="singleTop" android:name="com.seagroup.spark.videoClip.VideoClipSelectActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ab" android:launchMode="singleTop" android:name="com.seagroup.spark.videoClip.VideoClipPublishActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/md" android:launchMode="singleTop" android:name="com.seagroup.spark.videoClip.VideoClipEditThumbnailActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/a1" android:name="com.seagroup.spark.me.AboutActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/k5" android:name="com.seagroup.spark.me.FeedbackActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/k6" android:name="com.seagroup.spark.me.FeedbackCategoryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ot" android:name="com.seagroup.spark.me.MessageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.webview.WebViewActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/r0" android:name="com.seagroup.spark.me.SettingActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/od" android:name="com.seagroup.spark.me.ProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.media_preview.AvatarPreviewActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/av" android:name="com.seagroup.spark.media_preview.AvatarEditActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:launchMode="singleTask" android:name="com.seagroup.spark.live.LivePlayerActivity" android:screenOrientation="portrait" android:theme="@style/e5" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.seagroup.spark.DeepLinkRouterActivity" android:theme="@style/hu">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="mambet.tv" android:pathPattern="/.*" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="test.connect.mambet.tv" android:pathPattern="/.*" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="test.connect.mambet.tv" android:pathPattern="/.*" android:scheme="mambet"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="mambet.tv" android:pathPattern="/.*" android:scheme="mambet"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="booyah.live" android:pathPattern="/.*" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="test.connect.booyah.live" android:pathPattern="/.*" android:scheme="https"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="booyah.live" android:pathPattern="/.*" android:scheme="mambet"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="test.connect.booyah.live" android:pathPattern="/.*" android:scheme="mambet"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="booyah.live" android:pathPattern="/.*" android:scheme="booyah"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:host="test.connect.booyah.live" android:pathPattern="/.*" android:scheme="booyah"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.seagroup.spark.live.ClipsPlayerActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ak" android:name="com.seagroup.spark.live_preview.AllGamesActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.live_preview.GameChannelsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/fa" android:name="com.seagroup.spark.me.ContentLanguageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.streaming.LanguageActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/sa" android:name="com.seagroup.spark.me.StreamerCenterActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/wh" android:name="com.seagroup.spark.me.WithdrawalHistoryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/kl" android:name="com.seagroup.spark.me.GiftLogActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/qy" android:name="com.seagroup.spark.me.ChooseRegionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.BannerActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.ExplanationActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.me.StreamFromPCActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/q8" android:name="com.seagroup.spark.clips.CommentDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ov" android:name="com.seagroup.spark.me.NotificationSettingsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ob" android:name="com.seagroup.spark.me.ModeratorsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/b5" android:name="com.seagroup.spark.me.BannedUsersActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ba" android:name="com.seagroup.spark.me.BlockedUsersActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/q1" android:name="com.seagroup.spark.live_following.RecommendedStreamerActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/lu" android:name="com.seagroup.spark.clips.RecommendedClipsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/a8" android:name="com.seagroup.spark.live_preview.ChannelListActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/tz" android:name="com.seagroup.spark.live_preview.TopHighlightsActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.seagroup.spark.live_preview.VideoPlayerActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.seagroup.spark.streaming.StreamSummaryActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/b_" android:name="com.seagroup.spark.me.BlockedPhrasesActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name="com.seagroup.spark.search.SearchActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name="com.seagroup.spark.streaming.StatsCenterActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ly" android:name="com.seagroup.spark.me.HotWordsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/cq" android:name="com.seagroup.spark.me.ChatRulesEditActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/ex" android:name="com.seagroup.spark.me.ConnectedAccountsActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/k2" android:name="com.seagroup.spark.me.AccountsFAQActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/u2" android:name="com.seagroup.spark.me.TopupCenterActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/sq" android:name="com.seagroup.spark.streamer_program.StreamerProgramActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/sb" android:name="com.seagroup.spark.streamer_program.StreamerEligibilityCheckActivity"/>
+        <service android:name="com.seagroup.spark.streaming.chat.ChatService" android:process=":live"/>
+        <service android:name="com.seagroup.spark.push.CustomFcmService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/r1"/>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/am"/>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="@string/pu"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.beetalk.sdk.BTLoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <provider android:authorities="com.facebook.app.FacebookContentProvider2081111558871624" android:exported="true" android:name="com.facebook.FacebookContentProvider"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.beetalk.sdk.GarenaAuthActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.beetalk.sdk.plugin.GGPluginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.garena.android.DefaultNotificationReceiver">
+            <intent-filter>
+                <action android:name="com.garena.android.gpns.NOTIFICATION_RECEIVE"/>
+                <category android:name="com.mambet.tv"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="com.garena.sdk.ApplicationSourceId" android:value="2"/>
+        <meta-data android:name="com.garena.sdk.applicationId" android:value="10058"/>
+        <meta-data android:name="com.garena.sdk.push.applicationId" android:value="10058"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/js"/>
+        <meta-data android:name="com.beetalklib.ganalytics.report_url" android:value="http://122.11.128.69:2205"/>
+        <meta-data android:name="firebase_crashlytics_collection_enabled" android:value="true"/>
+        <meta-data android:name="com.garena.sdk.google_client_id" android:value="@string/kw"/>
+        <receiver android:exported="true" android:name="com.appsflyer.SingleInstallBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="orientation|screenLayout|screenSize" android:exported="true" android:launchMode="singleTop" android:name="com.garena.pay.android.GGPayActivity" android:theme="@style/hv"/>
+        <activity android:configChanges="orientation|screenLayout|screenSize" android:launchMode="singleTask" android:name="com.garena.overlay.FloatingMenuActivity" android:theme="@style/hw"/>
+        <service android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.garena.overlay.RecordingService"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.linecorp.linesdk.auth.internal.LineAuthenticationActivity" android:theme="@style/e4"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.linecorp.linesdk.auth.internal.LineAuthenticationCallbackActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="lineauth"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:name="com.facebook.FacebookActivity" android:theme="@style/k_"/>
+        <activity android:name="com.facebook.CustomTabMainActivity"/>
+        <activity android:name="com.facebook.CustomTabActivity"/>
+        <service android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="net.openid.appauth.AuthorizationManagementActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="true" android:name="net.openid.appauth.RedirectUriReceiverActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="com.mambet.tv"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="ServiceActivity" android:name="com.vk.sdk.VKServiceActivity" android:theme="@style/i6"/>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.google.firebase.auth.internal.FederatedSignInActivity" android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <service android:exported="true" android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.mambet.tv.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <receiver android:enabled="true" android:exported="true" android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver" android:permission="android.permission.INSTALL_PACKAGES">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/g"/>
+        <provider android:authorities="com.mambet.tv.MarketingInitProvider" android:exported="false" android:name="com.facebook.marketing.internal.MarketingInitProvider"/>
+        <provider android:authorities="com.mambet.tv.FacebookInitProvider" android:exported="false" android:name="com.facebook.internal.FacebookInitProvider"/>
+        <receiver android:exported="false" android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.mambet.tv.workmanager-init" android:directBootAware="false" android:exported="false" android:multiprocess="true" android:name="androidx.work.impl.WorkManagerInitializer"/>
+        <service android:directBootAware="false" android:enabled="@bool/d" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/f" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/e" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/d" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <provider android:authorities="com.mambet.tv.lifecycle-process" android:exported="false" android:multiprocess="true" android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"/>
+        <provider android:authorities="com.mambet.tv.crashlyticsinitprovider" android:exported="false" android:initOrder="90" android:name="com.crashlytics.android.CrashlyticsInitProvider"/>
+        <meta-data android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule" android:value="GlideModule"/>
+        <service android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
+    </application>
+</manifest>
