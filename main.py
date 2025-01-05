@@ -10,7 +10,7 @@ from workflow_manager import TestWorkflowManager
 
 # TODO:自動提取app名
 appname = 'cashbook'
-AndroidManifest_filepath = 'cashbook_AndroidManifest.xml'
+AndroidManifest_filepath = './AndroidManifest/cashbook_AndroidManifest.xml'
 
 def extract_app_info(appname):
     filepath = AndroidManifest_filepath
