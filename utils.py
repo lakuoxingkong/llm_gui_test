@@ -2,9 +2,11 @@ import time
 import os
 import subprocess
 import re
-import google.generativeai as genai
+from openai import OpenAI
 import os
 
+# deepseek API Key
+deepseek_key = ''
 # input your key
 gemini_key = ''
 
@@ -178,16 +180,14 @@ def input_text(content: str, bounds):
     print("run command: {}".format(cmd))
     os.system(cmd)
 
-def init_llm(): 
-    # 设置代理以访问Google Gemini
-    os.environ["HTTP_PROXY"] = "http://127.0.0.1:7890"
-    os.environ["HTTP_PROXYS"] = "http://127.0.0.1:7890"
 
-    genai.configure(api_key=gemini_key)  # 填入自己的api_key
-    
-    model = genai.GenerativeModel('gemini-1.5-flash')
-    chat = model.start_chat()
-    few_shot = """
+class Chat:
+    def __init__(self):
+        self.llm = OpenAI(api_key=deepseek_key, base_url="https://api.deepseek.com")
+        self.model_name = "deepseek-chat"
+        self.messages = [
+            {"role": "system",
+             "content": """
 Now that you are an automated testing program for Android software, \
 what you have to do is test the functionality of the software as completely as possible \
 and check for any problems. I will tell you the information of the current program interface \
@@ -196,14 +196,15 @@ by asking questions, and you will tell me the next step of the test by answering
 When you encounter components with similar names, you can look at them as the same category and test one or more of them. When you encounter many operation options, you tend to click on them from smallest to largest, and tend to click on the component with "menu button" in its name.
 
 Now that you are an automated testing program for Android software, what you have to do is test the functionality of the software as completely as possible and check for any problems. I will tell you the information of the current program interface by asking questions, and you will tell me the next step of the test by answering.
-
-"""
-    # TODO: 异常处理不完善
-    while True:
-        try:
-            response = chat.send_message(few_shot)
-            break
-        except:
-            print('llm使用次数达到限制，等待60秒')
-            time.sleep(60)
-    return chat
+             """},
+            ]
+        
+    def send_message(self, message):
+        self.messages.append({"role": "user", "content": message})
+        response = self.llm.chat.completions.create(
+            model=self.model_name,
+            messages=self.messages,
+            stream=False
+        )
+        self.messages.append(response.choices[0].message)
+        return response.choices[0].message.content

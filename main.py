@@ -46,7 +46,7 @@ def get_page_hierarchy():
     return data_dict
 
 
-chat = init_llm()
+chat = Chat()
 json_data = extract_app_info(appname)
 def main(step):
     data_dict = get_page_hierarchy()
@@ -199,7 +199,7 @@ def main(step):
         except:
             print('llm使用次数达到限制，等待60秒')
             time.sleep(60)
-    llm_answer = response.text
+    llm_answer = response
     print('llm_answer')
     print(llm_answer)
 
