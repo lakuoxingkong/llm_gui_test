@@ -2,7 +2,7 @@
 
 本软件用于自动化测试安卓app的图形界面，基于论文Make LLM a Testing Expert: Bringing Human-like Interaction to
 Mobile GUI Testing via Functionality-aware Decisions中的GPTDroid。虽然文中给出了源代码仓库链接，
-但链接已失效。另外找到https://github.com/testinging6/GPTDroid也是该论文的实现，但与原文有差别
+但链接已失效。另外找到 https://github.com/testinging6/GPTDroid 也是该论文的实现，但与原文有差别
 （如prompt与原文描述不一致），本软件在其基础上进行了修改。
 ## 演示视频
 https://box.nju.edu.cn/f/3e1f211be808408d8870/
@@ -28,7 +28,7 @@ gemini使用可参考https://blog.csdn.net/zwqjoy/article/details/135058668
 需要提前在main.py中手动输入appname（app的名称）和AndroidManifest_filepath（AndroidManifest.xml的路径）的值。
 
 由于我们需要从AndroidManifest.xml中提取app信息，需要安装apktool工具用于反编译.apk文件。
-apktool使用参考https://blog.csdn.net/shulianghan/article/details/121027522，
+apktool使用参考https://blog.csdn.net/shulianghan/article/details/121027522 ，
 我们只需下载jar包后执行 `java -jar apktool_2.4.1.jar d demo.apk -o demo` 命令即可，
 其中 d 后面是要反编译的
 apk文件路径, -o后面是反编译结果的输出目录，我们只需要其中的AndroidManifest.xml，如本仓库中的
