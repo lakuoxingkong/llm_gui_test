@@ -1,0 +1,190 @@
+(llm_gui_test) PS C:\Workspace\code\llm_gui_test> python main.py
+['Home', 'Search']
+json data:
+{'Global information attribute': [{'Activities': ['Home', 'Search'],
+                                   'App name': 'cashbook'}]}
+step1 begins
+llm_answer
+【Operation: "Click". Widget: "ivAddNewRecord".】
+没有找到匹配的 Widget 和 Input.
+run command: adb shell input tap 557.0 2232.0
+ivAddNewRecord is clicked.
+状态验证结果:
+【验证结果】
+1. 界面显示了与添加新记录相关的组件，包括输入金额的文本框、选择类别的下拉菜单、日期选择器、备注输入框以及保存和取消按钮。
+2. 输入框中为空，日期选择器显示当前日期。
+3. 已跳转到“添加记录”页面（Activity: RecordEdit）。
+
+【结论】测试通过，状态符合预期。
+策略调整建议: 【策略调整建议】
+1. **是否需要改变测试深度?**
+   - 当前测试深度适中，已覆盖主要功能（添加记录）。建议继续深入测试其他核心功能，如“搜索”、“查看图表分析”等，以确保全面覆盖。
+
+2. **是否需要关注特定类型的组件?**
+   - 需要重点关注可交互组件（如 `TextView`、`ImageView` 等）和输入组件（如文本框、下拉菜单等），确保它们的交互逻辑和输入验证功能正常。
+
+3. **是否需要避免某些操作序列?**
+   - 目前无需避免特定操作序列，但建议在测试过程中记录已测试的组件和操作序列，避免重复测试相同路径，提高测试效率。
+
+【下一步建议】
+- 继续测试其他可点击组件（如“搜索”、“查看图表分析”等），并验证其功能是否符合预期。
+- 测试输入组件的边界值和异常输入情况，确保输入验证逻辑正确。
+run command: adb shell input tap 557.0 2232.0
+ivAddNewRecord is clicked.
+状态验证结果: 【验证结果】
+1. 界面显示了与添加新记录相关的组件，包括输入金额的文本框、选择类别的下拉菜单、日期选择器、备注输入框以及保存和取消按钮。
+2. 输入框中为空，日期选择器显示当前日期。
+3. 已跳转到“添加记录”页面（Activity: RecordEdit）。
+
+【结论】测试通过，状态符合预期。
+step1 ends
+step2 begins
+llm_answer
+【Operation: "Click". Widget: "1".】
+没有找到匹配的 Widget 和 Input.
+run command: adb shell input tap 136.0 1874.5
+1 is clicked.
+状态验证结果:
+【验证结果】
+1. 界面显示了与当前页面相同的组件，包括数字键盘、类别选择、金额显示区域以及保存和取消按钮。
+2. 输入框中的金额值从 `0.` 更新为 `1.`，表示用户成功输入了数字 `1`。
+3. 页面仍为 `RecordEdit`，未发生跳转。
+
+【结论】测试通过，状态符合预期。
+run command: adb shell input tap 136.0 1874.5
+1 is clicked.
+状态验证结果: 【验证结果】
+1. 界面显示了与当前页面相同的组件，包括数字键盘、类别选择、金额显示区域以及保存和取消按钮。
+2. 输入框中的金额值从 `0.` 更新为 `1.`，表示用户成功输入了数字 `1`。
+3. 页面仍为 `RecordEdit`，未发生跳转。
+
+【结论】测试通过，状态符合预期。
+step2 ends
+step3 begins
+llm_answer
+【Operation: "Click". Widget: "确定".】
+没有找到匹配的 Widget 和 Input.
+run command: adb shell input tap 946.5 2139.0
+确定 is clicked.
+状态验证结果:
+【验证结果】
+1. 界面显示了与“Home”页面相关的组件，包括“我的记账本”、“搜索”、“本月支出”、“本月收入”、“预算剩余”、“查看图表分析”以及最近的交易记录。
+2. 输入框中为空，表示记录已成功保存并清空。
+3. 页面已跳转至“Home”页面，显示更新后的交易记录和统计数据。
+
+【结论】测试通过，状态符合预期。
+run command: adb shell input tap 946.5 2139.0
+确定 is clicked.
+状态验证结果: 【验证结果】
+1. 界面显示了与“Home”页面相关的组件，包括“我的记账本”、“搜索”、“本月支出”、“本月收入”、“预算剩余”、“查看图表分析”以及最近的交易记录。
+2. 输入框中为空，表示记录已成功保存并清空。
+3. 页面已跳转至“Home”页面，显示更新后的交易记录和统计数据。
+
+【结论】测试通过，状态符合预期。
+step3 ends
+step4 begins
+llm_answer
+【Operation: "Click". Widget: "搜索".】
+没有找到匹配的 Widget 和 Input.
+run command: adb shell input tap 1016.5 131.0
+搜索 is clicked.
+状态验证结果:
+【验证结果】
+1. 界面显示了与搜索功能相关的组件，包括搜索输入框、搜索按钮以及历史搜索记录（如果有）。
+2. 输入框中为空，等待用户输入搜索关键词。
+3. 页面已跳转到“Search”页面，显示搜索界面。
+
+【结论】测试通过，状态符合预期。
+run command: adb shell input tap 1016.5 131.0
+搜索 is clicked.
+状态验证结果: 【验证结果】
+1. 界面显示了与搜索功能相关的组件，包括搜索输入框、搜索按钮以及历史搜索记录（如果有）。
+2. 输入框中为空，等待用户输入搜索关键词。
+3. 页面已跳转到“Search”页面，显示搜索界面。
+
+【结论】测试通过，状态符合预期。
+step4 ends
+step5 begins
+llm_answer
+【Widget: "搜索消费记录". Input: "餐饮". Operation: "Click". Widget: "Back".】
+run command: adb shell input tap 634.5 131.5
+run command: adb shell input text 餐饮
+
+Exception occurred while executing 'text':
+java.lang.NullPointerException: Attempt to get length of null array
+        at com.android.server.input.InputShellCommand.sendText(InputShellCommand.java:390)
+        at com.android.server.input.InputShellCommand.runText(InputShellCommand.java:362)
+        at com.android.server.input.InputShellCommand.onCommand(InputShellCommand.java:287)
+        at com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)
+        at android.os.ShellCommand.exec(ShellCommand.java:38)
+        at com.android.server.input.InputManagerService.onShellCommand(InputManagerService.java:3193)
+        at android.os.Binder.shellCommand(Binder.java:1230)
+        at android.os.Binder.onTransact(Binder.java:1043)
+        at android.hardware.input.IInputManager$Stub.onTransact(IInputManager.java:1306)
+        at android.os.Binder.execTransactInternal(Binder.java:1505)
+        at android.os.Binder.execTransact(Binder.java:1444)
+run command: adb shell input tap 112.5 2337.0
+Back is clicked.
+状态验证结果:
+【验证结果】
+1. 界面显示了与“Home”页面相关的组件，包括“我的记账本”、“搜索”、“本月支出”、“本月收入”、“预算剩余”、“查看图表分析”以及最近的交易记录。
+2. 输入框中为空，表示搜索操作已取消并返回主页。
+3. 页面已跳转至“Home”页面，显示更新后的交易记录和统计数据。
+
+【结论】测试通过，状态符合预期。
+run command: adb shell input tap 112.5 2337.0
+Back is clicked.
+状态验证结果: 【验证结果】
+1. 界面显示了与“Home”页面相关的组件，包括“我的记账本”、“搜索”、“本月支出”、“本月收入”、“预算剩余”、“查看图表分析”以及最近的交易记录。
+2. 输入框中为空，表示搜索操作已取消并返回主页。
+3. 页面已跳转至“Home”页面，显示更新后的交易记录和统计数据。
+
+【结论】测试通过，状态符合预期。
+step5 ends
+step6 begins
+llm_answer
+【Widget: "搜索消费记录". Input: "交通". Operation: "Click". Widget: "Back".】
+run command: adb shell input tap 634.5 131.5
+run command: adb shell input text 交通
+
+Exception occurred while executing 'text':
+java.lang.NullPointerException: Attempt to get length of null array
+        at com.android.server.input.InputShellCommand.sendText(InputShellCommand.java:390)
+        at com.android.server.input.InputShellCommand.runText(InputShellCommand.java:362)
+        at com.android.server.input.InputShellCommand.onCommand(InputShellCommand.java:287)
+        at com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)
+        at android.os.ShellCommand.exec(ShellCommand.java:38)
+        at com.android.server.input.InputManagerService.onShellCommand(InputManagerService.java:3193)
+        at android.os.Binder.shellCommand(Binder.java:1230)
+        at android.os.Binder.onTransact(Binder.java:1043)
+        at android.hardware.input.IInputManager$Stub.onTransact(IInputManager.java:1306)
+        at android.os.Binder.execTransactInternal(Binder.java:1505)
+        at android.os.Binder.execTransact(Binder.java:1444)
+Back is not found.
+状态验证结果:
+【验证结果】
+1. 界面显示了与“Home”页面相关的组件，包括“我的记账本”、“搜索”、“本月支出”、“本月收入”、“预算剩余”、“查看图表分析”以及最近的交易记录。
+2. 输入框中为空，表示搜索操作已取消并返回主页。
+3. 页面已跳转至“Home”页面，显示更新后的交易记录和统计数据。
+
+【结论】测试通过，状态符合预期。
+策略调整建议: 【策略调整建议】
+1. **是否需要改变测试深度?**
+   - 当前测试深度适中，已覆盖主要功能（搜索和返回主页）。建议继续深入测试其他核心功能，如“查看图表分析”、“预算设置”等，以确保全面覆盖。
+
+2. **是否需要关注特定类型的组件?**
+   - 需要重点关注可交互组件（如 `EditText`、`TextView`、`ImageView` 等）和输入组件（如搜索框、金额输入框等），确保它们的交互逻辑和输入验证功能正常。
+
+3. **是否需要避免某些操作序列?**
+   - 目前无需避免特定操作序列，但建议在测试过程中记录已测试的组件和操作序列，避免重复测试相同路径，提高测试效率。
+
+【下一步建议】
+- 继续测试其他可点击组件（如“查看图表分析”、“预算设置”等），并验证其功能是否符合预期。
+- 测试输入组件的边界值和异常输入情况，确保输入验证逻辑正确。
+Back is not found.
+状态验证结果: 【验证结果】
+1. 界面显示了与“Home”页面相关的组件，包括“我的记账本”、“搜索”、“本月支出”、“本月收入”、“预算剩余”、“查看图表分析”以及最近的交易记录。
+2. 输入框中为空，表示搜索操作已取消并返回主页。
+3. 页面已跳转至“Home”页面，显示更新后的交易记录和统计数据。
+
+【结论】测试通过，状态符合预期。
