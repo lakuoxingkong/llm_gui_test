@@ -4,11 +4,17 @@
 Mobile GUI Testing via Functionality-aware Decisions中的GPTDroid。虽然文中给出了源代码仓库链接，
 但链接已失效。另外找到 https://github.com/testinging6/GPTDroid 也是该论文的实现，但与原文有差别
 （如prompt与原文描述不一致），本软件在其基础上进行了修改。
+
 ## 演示视频
-https://box.nju.edu.cn/f/3e1f211be808408d8870/
+
+演示视频1：<https://box.nju.edu.cn/f/3e1f211be808408d8870/>
+
+演示视频2：<https://box.nju.edu.cn/f/9d15a63a69fb4cc48a37/>
 
 ## 使用方法
+
 #### Requirements
+
 * Android emulator
 * Android SDK
 * Python 3.9
