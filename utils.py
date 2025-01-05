@@ -6,7 +6,7 @@ from openai import OpenAI
 import os
 
 # deepseek API Key
-deepseek_key = ''
+deepseek_key = 'sk-b00db3ec24cd47bf8d037eaee3471d60'
 # input your key
 gemini_key = ''
 

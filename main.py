@@ -5,10 +5,11 @@ from utils import *
 from pprint import pprint
 import re
 import xml.etree.ElementTree as ET
+from state_validator import StateValidator
 
 # TODO:自動提取app名
-appname = 'booyah!'
-AndroidManifest_filepath = 'apk8_AndroidManifest.xml'
+appname = 'via!'
+AndroidManifest_filepath = 'via_AndroidManifest.xml'
 
 def extract_app_info(appname):
     filepath = AndroidManifest_filepath
@@ -222,14 +223,40 @@ def main(step):
     else:
         print("没有找到匹配的 Widget 和 Input.")
 
-    # 做operation操作
+    validator = StateValidator(chat)
+    
+    # 在执行操作前记录预期状态
     if operation_match:
-        operation_value = operation_match.group(1)  # Operation 的值
-        widget_after_operation = operation_match.group(2)  # Operation 后面的 Widget
-        # print("Operation:", operation_value)
-        # print("Widget after Operation:", widget_after_operation)
+        operation_value = operation_match.group(1)
+        widget_after_operation = operation_match.group(2)
+        
+        # 让LLM预测操作后的预期状态
+        prediction_prompt = f"""
+预测执行 {operation_value} 操作在 {widget_after_operation} 上后的预期状态:
+1. 界面应该显示哪些组件?
+2. 输入框中应该有什么值?
+3. 应该跳转到什么页面吗?
+"""
+        expected_state = chat.send_message(prediction_prompt)
+        validator.record_expected_state(f"{operation_value} {widget_after_operation}", expected_state)
+        
+        # 执行操作
         if operation_value.lower() == 'click':
             click(widget_after_operation, components_list)
+            
+        # 等待界面稳定
+        time.sleep(1)
+        
+        # 获取新状态并验证
+        new_data_dict = get_page_hierarchy()
+        new_components = getAllComponents(new_data_dict)
+        new_running_info = get_running_info()
+        new_activity = new_running_info['activity'].replace('.', ' ').split(' ')[-1].replace('Activit', '')
+        
+        validator.capture_current_state(new_components, new_activity)
+        validation_result = validator.verify_state(f"{operation_value} {widget_after_operation}")
+        print("状态验证结果:")
+        print(validation_result)
     else:
         print("没有找到匹配的 Operation 和 Widget.")
 
